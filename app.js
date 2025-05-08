@@ -72,9 +72,9 @@ async function main() {
               
 }
 
-// app.get("/", (req, res) => {
-//     res.send("root");
-// });
+app.get("/", (req, res) => {
+    res.send("Welcome to backend API!");
+});
 
 
 app.use(session(sessionOption));
