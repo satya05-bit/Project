@@ -69,40 +69,6 @@ router.route("/:id")
 //edit
 router.get("/:id/edit",isLoggedIn,isOwner, wrapAsync(renderEditForm));
 
-// router.get("/search", async (req, res) => {
-//     console.log("✅ Search Route Hit!");
-//     try {
-//         let { q } = req.query; // Get search query from URL
-//         console.log("🔎 Search Query:", q);
-//         if (!q || q.trim() === "") {
-//             console.log("⚠️ Empty query, redirecting to /listings");
-//             return res.redirect("/listings");
-//         }
-//  // Redirect if empty
 
-//         const listings = await Listing.find({
-//             title: { $regex: q, $options: "i" } // Case-insensitive search
-//         });
-//         console.log("🔍 Listings Found:", listings);
-        
-
-//         if (listings.length === 1) {
-//             const listingId = listings[0]._id;
-//             if (!mongoose.Types.ObjectId.isValid(listingId.toString())) {
-//                 console.error("❌ Invalid Listing ID Detected!");
-//                 return res.redirect("/listings?error=Invalid+Listing+ID");
-//             }
-
-//             console.log("✅ Redirecting to:", `/listings/${listingId}`);
-//             return res.redirect(`/listings/${listingId}`);
-//         }
-//         console.log("🖥 Rendering search results.");
-//         res.render("listing/index.ejs", { allListings: listings });
-//     }
-//  catch (error) {
-//         console.error("Search Error:", error);
-//         res.status(500).send("Internal Server Error");
-//     }
-// });
 
 module.exports=router;
