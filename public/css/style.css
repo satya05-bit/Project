@@ -121,3 +121,9 @@ body {
    height: 25rem;
    width: 30rem;
 }
+@media (max-width: 768px) {
+    #map {
+        width: 100%; /* Full width on small screens */
+        height: 40vh; /* Reduces height for compact view */
+    }
+}
