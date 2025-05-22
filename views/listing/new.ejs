@@ -13,9 +13,9 @@
                     <label for="description" class="form-label">Description</label>
                     <textarea type="text" name="listing[description]" class="form-control"
                         placeholder="enter description" required></textarea>
-                        <div class="invalid-feedback">Please enter a short description</div>
+                    <div class="invalid-feedback">Please enter a short description</div>
                 </div>
-                
+
                 <div class="mb-3">
                     <label for="image" class="form-label">Upload Image </label>
                     <input type="file" name="listing[image]" class="form-control" required>
@@ -23,23 +23,46 @@
                 <div class="row">
                     <div class="mb-3 col-md-4">
                         <label for="price" class="form-label">Price</label>
-                        <input name="listing[price]" placeholder="enter price" type="number" class="form-control" required>
+                        <input name="listing[price]" placeholder="enter price" type="number" class="form-control"
+                            required>
                         <div class="invalid-feedback">Price should be valid</div>
                     </div>
                     <div class="mb-3 col-md-8">
                         <label for="country" class="form-label">Country</label>
-                        <input type="text" name="listing[country]" placeholder="enter country" class="form-control" required>
+                        <input type="text" name="listing[country]" placeholder="enter country" class="form-control"
+                            required>
                         <div class="invalid-feedback">Country should be valid</div>
                     </div>
                 </div>
-                <div class="mb-3">
+                <div class="row">
+                <div class="mb-3 col-md-8">
                     <label for="location" class="form-label">Location</label>
-                    <input type="text" name="listing[location]" id="" placeholder="enter location" class="form-control" required>
+                    <input type="text" name="listing[location]" id="" placeholder="enter location" class="form-control"
+                        required>
                     <div class="invalid-feedback">Location should be valid</div>
                 </div>
-                <br><br>
-                <button class="btn btn-dark add-btn mt-3">Add</button>
-            </form>
-            <br><br>
+                <div class="mb-3 col-md-4">
+                    <label for="category">Category:</label>
+                    <select name="listing[category]" class="form-select" aria-label="Default select example" required>
+                        <option value="trending">Trending</option>
+                        <option value="rooms">Rooms</option>
+                        <option value="iconic-cities">Iconic Cities</option>
+                        <option value="mountains">Mountains</option>
+                        <option value="castles">Castles</option>
+                        <option value="pools">Amazing Pools</option>
+                        <option value="camping">Camping</option>
+                        <option value="farms">Farms</option>
+                        <option value="arctic">Arctic</option>
+                        <option value="domes">Domes</option>
+                        <option value="boats">Boats</option>
+                    </select>
+                    
+
         </div>
+        </div>
+        <br><br>
+        <button class="btn btn-dark add-btn mt-3">Add</button>
+        </form>
+        <br><br>
+    </div>
     </div>

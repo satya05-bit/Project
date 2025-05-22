@@ -59,6 +59,15 @@ router.get("/search", async (req, res) => {
         res.status(500).send("Internal Server Error");
     }
 });
+router.get("/", async (req, res) => {
+    const { category } = req.query; // Get filter from URL query
+
+    let query = {};
+    if (category) query.category = category; // ✅ Apply filter
+
+    const listings = await Listing.find(query);
+    res.render("listing/index", { listings });
+});
 
 router.route("/:id")
 .get( wrapAsync(showListing))
