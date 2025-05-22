@@ -45,7 +45,7 @@ module.exports.createListing=async (req, res, next) => {
         .send()
         console.log("🌍 Geocoding Response:", JSON.stringify(response.body, null, 2)); // 🔎 Log Full Response
 
-    
+    console.log(req.body);
     let url=req.file.path;
     let filename=req.file.filename;
      console.log(url,"..",filename);
