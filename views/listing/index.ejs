@@ -11,6 +11,7 @@
             margin-right: 2rem;
             margin-top: 2rem;
             opacity: 0.7;
+            
         }
         .filter:hover{
             opacity: 1;
@@ -117,4 +118,9 @@
             }
         }
     })
+    </script>
+    <script>
+      function filterCategory(category){
+        window.location.href=`/listings?category=${category}`;
+            }
     </script>

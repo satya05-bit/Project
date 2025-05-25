@@ -7,8 +7,24 @@ const mapToken=process.env.MAP_TOKEN;
 const geocodingClient=mbxGeocoding({ accessToken: mapToken });
 
 module.exports.index=async (req, res) => {
-    const allListings = await Listing.find({});
-    res.render("listing/index.ejs", { allListings });
+    const {category}=req.query;
+    console.log("category filter received:", category);
+
+    let allListings;
+    try{
+        if(category){
+        allListings=await Listing.find({
+            category:{$regex:new RegExp(category,"i")}
+        });
+    } else {
+        allListings=await Listing.find({});
+    }
+    res.render("listing/index.ejs",{allListings,selectedCategory:category});
+    } catch(error){
+        console.error("Error fetching listings:",error)
+        res.status(500).send("Something went wrong.");
+    }
+    
 }
 
 module.exports.renderNewForm=(req, res) => {
@@ -45,14 +61,14 @@ module.exports.createListing=async (req, res, next) => {
         .send()
         console.log("🌍 Geocoding Response:", JSON.stringify(response.body, null, 2)); // 🔎 Log Full Response
 
-    console.log(req.body);
+    console.log(req.body.listing);
     let url=req.file.path;
     let filename=req.file.filename;
      console.log(url,"..",filename);
     const newListing = new Listing(req.body.listing);
     newListing.owner=req.user._id;
      newListing.image={url,filename};
-     newListing.category= req.body.listing.category,
+     newListing.category=req.body.listing.category;
      newListing.geometry=response.body.features[0].geometry;
     
      let savedListing=await newListing.save();
