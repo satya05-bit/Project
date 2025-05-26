@@ -26,7 +26,7 @@ const listingSchema=new Schema({
         type:Schema.Types.ObjectId,
         ref:"User",
     },
-    category: { type: String, required: true, enum: ['trending', 'rooms', 'iconic-cities', 'mountains', 'castles', 'pools', 'camping','farms','arctic','domes','boats'] }, // ✅ Added `category`
+    category: { type: String, required: true, enum: ["trending", "rooms", "iconic-cities", "mountains", "castles", "pools", "camping","farms","arctic","domes","boats"] }, // ✅ Added `category`
 
     geometry:{
         type:{

@@ -1,8 +1,16 @@
+require('dotenv').config();
 const mongoose=require("mongoose");
 const initData=require("./data.js");
 const Listing=require("../models/listing.js");
 
-const mongo_Url="mongodb://127.0.0.1:27017/wanderlust";
+
+//const mongo_Url="mongodb://127.0.0.1:27017/wanderlust";
+const dbUrl="mongodb+srv://satyabratadas960:0ioOlMgug8tDQxy3@cluster0.zrdzmrm.mongodb.net/wanderlust?retryWrites=true&w=majority&appName=Cluster0";
+
+if (!dbUrl) {
+    console.error("❌ Error: Missing MongoDB connection string (ATLASDB_URL)!");
+    process.exit(1); // ✅ Exit to prevent further errors
+}
 
 main().then(()=>{
     console.log("connected to db");
@@ -11,16 +19,12 @@ main().then(()=>{
     console.log(err);
 })
 async function main() {
-    await mongoose.connect(mongo_Url);
+    await mongoose.connect(dbUrl);
 }
 
 const initDb=async()=>{
     await Listing.deleteMany({});
-    initData.data=initData.data.map((obj)=>({
-        ...obj,
-        owner:"6809caf4d2e4eab566562844",
-    }))
-    await Listing.insertMany(initData.data);
+       
     console.log("data was initialized");
 };
 initDb();
